@@ -1,0 +1,19 @@
+services:
+  workbench:
+    build: .
+    image: cloud-agent-workbench:latest
+    container_name: agent-workbench
+    ports:
+      - "${HOST_PORT:-8787}:8787"
+    environment:
+      MODEL_API_KEY: ${MODEL_API_KEY:?请在 .env 中配置 MODEL_API_KEY}
+      MODEL_BASE_URL: ${MODEL_BASE_URL:?请在 .env 中配置 MODEL_BASE_URL}
+      MODEL_NAME: ${MODEL_NAME:?请在 .env 中配置 MODEL_NAME}
+      CMD_TIMEOUT_SECONDS: ${CMD_TIMEOUT_SECONDS:-120}
+      AGENT_MAX_STEPS: ${AGENT_MAX_STEPS:-32}
+    volumes:
+      - workbench-data:/data
+    restart: unless-stopped
+
+volumes:
+  workbench-data:

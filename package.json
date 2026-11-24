@@ -1,0 +1,20 @@
+{
+  "name": "cloud-agent-workbench",
+  "version": "1.0.0",
+  "private": true,
+  "description": "云端 Agent 助手工作台：把 Agent CLI 的能力带进浏览器（多会话、实时过程、文件工作区、成果交付）",
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "agent": "node cli/agent-cli.js",
+    "smoke": "node scripts/smoke.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "express": "^4.21.2",
+    "multer": "^2.0.2"
+  }
+}

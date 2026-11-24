@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>云端 Agent 助手工作台</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar">
+      <div class="sidebar-head">
+        <div class="brand">
+          <span class="brand-logo">🛠️</span>
+          <div>
+            <div class="brand-name">云端 Agent 工作台</div>
+            <div class="brand-sub" id="model-badge">连接中…</div>
+          </div>
+        </div>
+        <button id="btn-new-session" class="btn btn-primary btn-block">＋ 新建会话</button>
+      </div>
+      <div id="session-list" class="session-list"></div>
+      <div class="sidebar-foot">
+        <span id="conn-dot" class="dot dot-gray"></span><span id="conn-text">未连接</span>
+      </div>
+    </aside>
+
+    <main id="main">
+      <div id="empty-state" class="empty-state">
+        <div class="empty-icon">🛠️</div>
+        <h1>云端 Agent 助手工作台</h1>
+        <p>把任务交给运行在容器里的 Agent：开发小工具、分析材料、整理报告。<br/>
+        多个会话并行推进，关掉页面回来还能继续。</p>
+        <button class="btn btn-primary" onclick="createSession()">新建一个会话开始</button>
+        <div class="empty-tips">
+          <div class="tip"><b>开发任务</b><span>“帮我写一个命令行待办工具，带测试”</span></div>
+          <div class="tip"><b>日常任务</b><span>上传材料 →“分析这些数据，整理一份报告”</span></div>
+        </div>
+      </div>
+
+      <div id="session-view" class="session-view hidden">
+        <header class="session-head">
+          <div class="session-title-wrap">
+            <h2 id="session-title">会话</h2>
+            <span id="run-badge" class="badge badge-idle">空闲</span>
+          </div>
+          <div class="session-actions">
+            <button id="btn-toggle-files" class="btn btn-ghost" title="文件工作区">📁 文件</button>
+            <button id="btn-delete-session" class="btn btn-ghost btn-danger" title="删除会话">🗑</button>
+          </div>
+        </header>
+
+        <div id="timeline" class="timeline"></div>
+
+        <footer class="composer">
+          <div id="upload-chips" class="upload-chips"></div>
+          <div class="composer-row">
+            <button id="btn-upload" class="btn btn-ghost" title="上传材料（存入 uploads/）">📎</button>
+            <input type="file" id="file-input" multiple hidden />
+            <textarea id="input" rows="1" placeholder="交给 Agent 一个任务…（Enter 发送，Shift+Enter 换行）"></textarea>
+            <button id="btn-send" class="btn btn-primary">发送</button>
+            <button id="btn-stop" class="btn btn-stop hidden">■ 停止</button>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+    <aside id="files-panel" class="files-panel hidden">
+      <div class="files-head">
+        <b>文件工作区</b>
+        <div>
+          <button id="btn-refresh-files" class="btn btn-ghost" title="刷新">⟳</button>
+          <button id="btn-download-all" class="btn btn-ghost" title="打包下载整个工作区">⬇ 全部</button>
+          <button id="btn-close-files" class="btn btn-ghost">✕</button>
+        </div>
+      </div>
+      <div id="file-tree" class="file-tree"></div>
+      <div id="file-preview" class="file-preview hidden">
+        <div class="preview-head">
+          <span id="preview-name"></span>
+          <div>
+            <a id="preview-download" class="btn btn-ghost" href="#" download>⬇ 下载</a>
+            <button id="btn-close-preview" class="btn btn-ghost">✕</button>
+          </div>
+        </div>
+        <pre id="preview-content"></pre>
+      </div>
+    </aside>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
