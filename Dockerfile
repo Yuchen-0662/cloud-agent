@@ -1,6 +1,8 @@
 # 云端 Agent 助手工作台
 # 单容器同时提供：Web 工作台 + 会话服务 + Agent CLI 运行环境
-FROM node:22-bookworm-slim
+# REGISTRY 可切换镜像源：默认国内加速站；海外环境可 --build-arg REGISTRY=docker.io/library
+ARG REGISTRY=docker.m.daocloud.io/library
+FROM ${REGISTRY}/node:22-bookworm-slim
 
 # Agent 处理日常工作所需的系统工具（文件检索/文本处理/压缩包/图片信息/Python 数据分析等）
 RUN apt-get update && apt-get install -y --no-install-recommends \
