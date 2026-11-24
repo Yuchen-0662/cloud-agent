@@ -1,0 +1,32 @@
+{
+  "finishedAt": "2026-11-24T12:05:37.495Z",
+  "devSession": {
+    "id": "s_94fbdb25f5e4",
+    "status": "done",
+    "files": [
+      "outputs/ledger.py",
+      "outputs/README.md",
+      "outputs/test_ledger.py",
+      "ledger.py",
+      "test_ledger.py"
+    ]
+  },
+  "analysisSession": {
+    "id": "s_14976d1796de",
+    "files": [
+      "analysis/analyze.py",
+      "analysis/build_summary.py",
+      "analysis/check_report.py",
+      "analysis/validate.py",
+      "outputs/fig1_monthly_trend.png",
+      "outputs/fig2_share.png",
+      "outputs/fig3_sku_trend.png",
+      "outputs/fig4_sep_drop.png",
+      "outputs/report.md",
+      "outputs/summary.csv",
+      "uploads/mwumwr6r-销售流水_2026Q3.csv",
+      "uploads/mwumwr73-门店周报节选.md"
+    ]
+  },
+  "sessionsTotal": 2
+}
